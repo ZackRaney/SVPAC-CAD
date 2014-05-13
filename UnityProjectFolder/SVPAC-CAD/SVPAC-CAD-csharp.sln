@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{7C96F846-62F9-B582-17B5-A7C926AF81EA}") = "SVPAC-CAD", "Assembly-CSharp-firstpass-vs.csproj", "{1FADFD4D-0811-5BA4-D86B-4CC4D85B1B00}"
+EndProject
 Project("{7C96F846-62F9-B582-17B5-A7C926AF81EA}") = "SVPAC-CAD", "Assembly-CSharp-vs.csproj", "{58096397-3FE1-F1CA-DAC1-60EBF85A3034}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FADFD4D-0811-5BA4-D86B-4CC4D85B1B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FADFD4D-0811-5BA4-D86B-4CC4D85B1B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FADFD4D-0811-5BA4-D86B-4CC4D85B1B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FADFD4D-0811-5BA4-D86B-4CC4D85B1B00}.Release|Any CPU.Build.0 = Release|Any CPU
 		{58096397-3FE1-F1CA-DAC1-60EBF85A3034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58096397-3FE1-F1CA-DAC1-60EBF85A3034}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58096397-3FE1-F1CA-DAC1-60EBF85A3034}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -17,7 +23,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-			GlobalSection(MonoDevelopProperties) = preSolution
+																GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

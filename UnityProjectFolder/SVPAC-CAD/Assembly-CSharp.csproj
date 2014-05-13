@@ -46,7 +46,18 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Main.cs" />
+     <Compile Include="Assets\Scripts\CameraPlane.cs" />
+     <Compile Include="Assets\Scripts\Crosshair.cs" />
+     <Compile Include="Assets\Scripts\Director.cs" />
+     <Compile Include="Assets\Scripts\DragRigidbody.cs" />
+     <Compile Include="Assets\Scripts\PlayerPickup.cs" />
+     <Compile Include="Assets\Scripts\TestRotateMouse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{1FADFD4D-0811-5BA4-D86B-4CC4D85B1B00}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{A522DFC2-70CE-4C5C-889D-269561B4BB7B}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
