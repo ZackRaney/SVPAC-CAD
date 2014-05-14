@@ -8,8 +8,9 @@ public class PlayerPickup : MonoBehaviour
     private Vector3 mouseRot;
     private bool rotate = false;
 
-    public int grabLength = 5;
-    public float rotateSpeed = 1.0f;
+    public int grabLength = 5; //Sets the max grab distance
+    public float rotateSpeed = 1.0f; //Changes the speed that the mouse rotates the object
+    //sets the two MouseLook objects; **must be set in inspector**
     public MouseLook m1;
     public MouseLook m2;
 
@@ -22,11 +23,13 @@ public class PlayerPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rotate)
+        if (rotate) //if space was pressed last frame
         {
+            //gets mouse position
             float h = rotateSpeed * Input.GetAxis("Mouse X");
             float v = rotateSpeed * Input.GetAxis("Mouse Y");
 
+            //rotates the object that was hit relative to world
             hit.transform.Rotate(v, h, 0, Space.World);
             print("Rotating!");
 
@@ -35,29 +38,32 @@ public class PlayerPickup : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(transform.position, transform.forward, out hit, grabLength))
+            //casts ray when space is pressed
+            if (Physics.Raycast(transform.position, transform.forward, out hit, grabLength)) 
             {
+                //Ray hit an object
                 grabObj = true;
-                hit.transform.parent = gameObject.transform;
+                hit.transform.parent = gameObject.transform; //parents the hit object to the camera
                 print("PICKUP!");
             }
             else
             {
+                //Ray didnt find anything
                 print("No Object!");
             }
 
         }
         if (Input.GetKeyDown("space") && grabObj == true)
         {
-         // hit.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * rotateSpeed);
-            //hit.transform.Rotate((Input.GetAxis("Mouse X") * rotateSpeed * Time.deltaTime), (Input.GetAxis("Mouse Y") * rotateSpeed * Time.deltaTime), 0, Space.Self);
+            //activates the rotate if statement at the start of the next frame
             rotate = true;
-            //Component look = playerController.GetComponent("MouseLook");
+            //disable mouselook on both capsule and camera
             m1.enabled = false;
             m2.enabled = false;
         }
         if (Input.GetKeyUp("space"))
         {
+            //when space is released 
             rotate = false;
             m1.enabled = true;
             m2.enabled = true;
@@ -66,6 +72,7 @@ public class PlayerPickup : MonoBehaviour
         {
             if (grabObj)
             {
+                //When mouse button is released and there is a grabbed object
                 grabObj = false;
                 hit.transform.parent = null;
                 print("Dropped!");
