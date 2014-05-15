@@ -6,7 +6,8 @@ public class PlayerPickup : MonoBehaviour
     private bool grabObj = false;
     private RaycastHit hit;
     private Vector3 mouseRot;
-    private bool rotate = false;
+    private bool rotate = false; 
+    private bool mouseLookEnabled = true;
 
     public int grabLength = 5; //Sets the max grab distance
     public float rotateSpeed = 1.0f; //Changes the speed that the mouse rotates the object
@@ -29,7 +30,7 @@ public class PlayerPickup : MonoBehaviour
             float h = rotateSpeed * Input.GetAxis("Mouse X");
             float v = rotateSpeed * Input.GetAxis("Mouse Y");
 
-            //rotates the object that was hit relative to world
+            //rotates the object that was hit relative to world axis
             hit.transform.Rotate(v, h, 0, Space.World);
             print("Rotating!");
 
@@ -58,15 +59,13 @@ public class PlayerPickup : MonoBehaviour
             //activates the rotate if statement at the start of the next frame
             rotate = true;
             //disable mouselook on both capsule and camera
-            m1.enabled = false;
-            m2.enabled = false;
+            DisableMouselook();
         }
         if (Input.GetKeyUp("space"))
         {
             //when space is released 
             rotate = false;
-            m1.enabled = true;
-            m2.enabled = true;
+            EnableMouselook();
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -78,7 +77,33 @@ public class PlayerPickup : MonoBehaviour
                 print("Dropped!");
             }
         }
+        //code for disableing mouselook to interact with menus 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //if mouse isnt alread disabled
+            if (mouseLookEnabled)
+            {
+                DisableMouselook();
+                mouseLookEnabled = false;
+            }
+            else
+            {
+                EnableMouselook();
+                mouseLookEnabled = true;
+            }
+        }
 
+    }
+
+    void DisableMouselook()
+    {
+        m1.enabled = false;
+        m2.enabled = false;
+    }
+    void EnableMouselook()
+    {
+        m1.enabled = true;
+        m2.enabled = true;
     }
 
 }
